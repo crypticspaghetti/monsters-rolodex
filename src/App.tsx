@@ -12,13 +12,14 @@ type AppState = {
 
 class App extends Component {
   state: AppState = {
-    monsters: [
-      { name: "Frankenstein", id: "7yuij" },
-      { name: "Mummy", id: "ghb12" },
-      { name: "Yurei", id: "0jhn4" },
-      { name: "Zombie", id: "5iuh2" },
-    ],
+    monsters: [],
   };
+
+  componentDidMount() {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((response) => response.json())
+      .then((users) => this.setState({ monsters: users }));
+  }
 
   render() {
     return (
