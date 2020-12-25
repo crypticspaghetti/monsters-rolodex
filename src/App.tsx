@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Component } from "react";
+import "./App.css";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+type Monster = {
+  name: string;
+  id: string | number;
+};
+
+type AppState = {
+  monsters: Monster[];
+};
+
+class App extends Component {
+  state: AppState = {
+    monsters: [
+      { name: "Frankenstein", id: "7yuij" },
+      { name: "Mummy", id: "ghb12" },
+      { name: "Yurei", id: "0jhn4" },
+      { name: "Zombie", id: "5iuh2" },
+    ],
+  };
+
+  render() {
+    return (
+      <div className="App">
+        {this.state.monsters.map((monster) => (
+          <h1 key={monster.id}>{monster.name}</h1>
+        ))}
+      </div>
+    );
+  }
 }
 
 export default App;
